@@ -21,15 +21,16 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);const io = require('socket.io')(server);
-// const io = require('socket.io')(server, {
-//   cors: {
-//     origin: 'http://localhost:4200',
-//     methods: ['GET', 'POST'],
-//     allowedHeaders: ['my-custom-header'],
-//     credentials: true,
-//   },
-// });
+var server = http.createServer(app);
+//const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['my-custom-header'],
+    credentials: true,
+  },
+});
 const mongoStore = MongoStore.create({
   mongoUrl:
     'mongodb+srv://admin:L650Xs9ixkF3fwGr@cluster0.nk3nn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
